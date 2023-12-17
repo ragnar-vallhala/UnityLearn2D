@@ -10,6 +10,7 @@ public class UiHandler : MonoBehaviour
     [SerializeField] private TMP_Text _scoreText;
     [SerializeField] private TMP_Text _highScoreText;
     [SerializeField] private Transform _playerTransform;
+    [SerializeField] private TMP_Text _messagesField;
     [SerializeField] private GameObject _fuelBar;
     [SerializeField] private float _fuelBarHeight = 1.0f;
     [SerializeField] private float _fuelBarWidth = 1.0f;
@@ -23,12 +24,11 @@ public class UiHandler : MonoBehaviour
     int _score=0;
     int _highScore = 0;
     Material[] _materials;
-
-
-
+    Messages _messages;
 
     void Start()
     {
+        _messages = new Messages(3,5);
         _collectableScript = _collecableHandler.GetComponent<Collectables>();
         _highScore = DataSaver.LaodScore();
         
@@ -44,6 +44,8 @@ public class UiHandler : MonoBehaviour
 
         UpdateHighScore();
         ChangeFontGlow();
+        UpdateMessages();
+        _messages.Update();
         
         
     }
@@ -93,5 +95,18 @@ public class UiHandler : MonoBehaviour
 
     public float GetLeftFuel(){
         return _collectableScript.GetLeftFuel();
+    }
+
+    void UpdateMessages(){
+        List<string> messages = _messages.GetMeassages();
+        string messageText  = "";
+        foreach(var i in messages){
+            messageText+=i + "\n";
+        }
+        _messagesField.text = messageText;
+    }
+
+    public void AddMessage(string msg){
+        _messages.AddMessage(msg);
     }
 }

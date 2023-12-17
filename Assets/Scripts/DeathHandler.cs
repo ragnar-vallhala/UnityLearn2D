@@ -35,7 +35,6 @@ public class DeathHandler : MonoBehaviour
         }
     }
     void Die(int killedBy){
-
         if(!Directory.Exists(Path.Join(Directory.GetCurrentDirectory(),"Assets/Resources"))){
             Directory.CreateDirectory(Path.Join(Directory.GetCurrentDirectory(),"Assets/Resources"));
         }
