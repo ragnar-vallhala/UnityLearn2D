@@ -1,0 +1,8 @@
+Effect                                                      Command
+------                                                      -------
+GAS                                                         Right Arrow
+BRAKE                                                       Left Arrow
+Increase Sound Effect Volume                                Up Arrow
+Decrease Sound Effect Volume                                Down Arrow
+Increase BGM Volume                                         Ctrl + Up Arrow
+Decrease BGM Volume                                         Ctrl + Down Arrow 
